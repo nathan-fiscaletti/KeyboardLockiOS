@@ -15,14 +15,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var lockTypePicker: UIPickerView!
     @IBOutlet weak var testTextBox: UITextField!
+    @IBOutlet weak var FrameOriginMessage: UILabel!
     
     /// We only keep track of these in order to
     /// change their priority, since in this demo
     /// view we have the ability to display both
     /// a HeightConstraint and a BottomConstraint lock.
     ///
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet var heightConstraint: NSLayoutConstraint!
+    @IBOutlet var topConstraint: NSLayoutConstraint!
     
     /// When you tap done, dismiss the keyboard.
     ///
@@ -75,6 +77,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             bottomConstraint.priority = UILayoutPriority(999)
             heightConstraint.priority = UILayoutPriority(998)
             
+            UIView.animate(withDuration: 0.3) {
+                self.FrameOriginMessage.alpha = 0.0
+            }
+            
             /// Creat the lock.
             ///
             self.lock = KeyboardLock(
@@ -99,6 +105,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             bottomConstraint.priority = UILayoutPriority(998)
             heightConstraint.priority = UILayoutPriority(999)
             
+            UIView.animate(withDuration: 0.3) {
+                self.FrameOriginMessage.alpha = 0.0
+            }
+            
             /// Create the lock.
             ///
             self.lock = KeyboardLock(
@@ -121,6 +131,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             heightConstraint.constant = (self.view.window?.frame)!.height - (
                 (self.view.window?.safeAreaInsets)!.bottom + (self.view.window?.safeAreaInsets)!.top
             )
+            
+            UIView.animate(withDuration: 0.3) {
+                self.FrameOriginMessage.alpha = 1.0
+            }
             
             /// Create the lock.
             self.lock = KeyboardLock(

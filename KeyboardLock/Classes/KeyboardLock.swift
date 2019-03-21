@@ -57,6 +57,10 @@ public class KeyboardLock
     ///
     private var keyboardActive:Bool = false
     
+    /// The original value for the modified portion of the view.
+    ///
+    private var originalValue: CGFloat = 0;
+    
     /// Stored observers.
     ///
     private var keyboardWillShowObserver : NSObjectProtocol? = nil
@@ -74,6 +78,30 @@ public class KeyboardLock
     ) {
         self.view = view
         self.lockType = type
+        
+        switch (type) {
+        case .BottomConstraint :
+            if let bottom = self.getBottomConstraint() {
+                self.originalValue = bottom.constant
+            } else {
+                self.originalValue = 0
+                NSLog("KeyboardLock: Failed to find bottom constraint.")
+            }
+            break
+            
+        case .HeightConstraint :
+            if let height = self.getHeightConstraint() {
+                self.originalValue = height.constant
+            } else {
+                self.originalValue = 0
+                NSLog("KeyboardLock: Failed to find height constraint.")
+            }
+            break;
+            
+        case .FrameOrigin :
+            self.originalValue = view.frame.origin.y
+            break;
+        }
     }
     
     /// Initialize the KeyboardLock
@@ -87,10 +115,16 @@ public class KeyboardLock
         withView                  view: UIView,
         andLockType               type: LockType,
         andConstraint       constraint: NSLayoutConstraint
-    ) {
+        ) {
         self.view = view
         self.lockType = type
         self.constraint = constraint
+        
+        if (type == .BottomConstraint || type == .HeightConstraint) {
+            self.originalValue = constraint.constant
+        } else {
+            self.originalValue = view.frame.origin.y
+        }
     }
     
     /// Lock the view to the keyboard using
@@ -103,28 +137,31 @@ public class KeyboardLock
             object: nil,
             queue: nil,
             using: { notification in
-                
+                NSLog("Called keyboard will show")
                 let keyboardSize: CGSize? = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size
                 self.keyboardHeight = (keyboardSize?.height)!
+                
+                let offset: CGFloat = self.keyboardHeight - ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.size).height
+                
                 self.keyboardActive = true
                 
                 UIView.animate(withDuration: 0.3) {
                     switch(self.lockType) {
                     case .HeightConstraint :
-                        self.updateHeightConstraint(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
+                        self.updateHeightConstraint(value: self.originalValue - (self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
                         break;
                         
                         
                     case .BottomConstraint :
-                        self.updateBottomConstraint(add: -(self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
+                        self.updateBottomConstraint(value: self.originalValue - (self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
                         break;
                         
                     case .FrameOrigin :
-                        self.updateFrameOrigin(add: -(self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
+                        self.updateFrameOrigin(value: self.originalValue - (self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
                         break;
                     }
                     
-                    self.view.superview?.layoutIfNeeded()
+                    self.view.superview?.layoutIfNeeded()    
                 }
         }
         )
@@ -135,19 +172,20 @@ public class KeyboardLock
             queue: nil,
             using: { notification in
                 self.keyboardActive = false
+                NSLog("Called keyboard will hide")
                 UIView.animate(withDuration: 0.3) {
                     switch(self.lockType) {
                     case .HeightConstraint :
-                        self.updateHeightConstraint(add: -(self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
+                        self.updateHeightConstraint(value: self.originalValue)
                         break;
                         
                         
                     case .BottomConstraint :
-                        self.updateBottomConstraint(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
+                        self.updateBottomConstraint(value: self.originalValue)
                         break;
                         
                     case .FrameOrigin :
-                        self.updateFrameOrigin(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
+                        self.updateFrameOrigin(value: self.originalValue)
                         break;
                     }
                     
@@ -166,16 +204,16 @@ public class KeyboardLock
             UIView.animate(withDuration: 0.3) {
                 switch(self.lockType) {
                 case .HeightConstraint :
-                    self.updateHeightConstraint(add: -(self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
+                    self.updateHeightConstraint(value: self.originalValue)
                     break;
                     
                     
                 case .BottomConstraint :
-                    self.updateBottomConstraint(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
+                    self.updateBottomConstraint(value: self.originalValue)
                     break;
                     
                 case .FrameOrigin :
-                    self.updateFrameOrigin(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
+                    self.updateFrameOrigin(value: self.originalValue)
                     break;
                 }
                 
@@ -200,17 +238,17 @@ public class KeyboardLock
     /// - Parameters
     ///     - add: The amount to add to the constraint constant.
     ///
-    private func updateHeightConstraint(add: CGFloat)
+    private func updateHeightConstraint(value: CGFloat)
     {
         if let constraint = self.constraint {
-            constraint.constant -= add
+            constraint.constant = value
             return
         }
         
         for i in self.view.constraints.indices {
             let constraint = self.view.constraints[i]
             if constraint.firstAttribute == .height && constraint.relation == .equal {
-                self.view.constraints[i].constant -= add
+                self.view.constraints[i].constant = value
                 return
             }
         }
@@ -226,10 +264,10 @@ public class KeyboardLock
     /// - Parameters
     ///     - add: The amount to add to the constraint constant.
     ///
-    private func updateBottomConstraint(add: CGFloat)
+    private func updateBottomConstraint(value: CGFloat)
     {
         if let constraint = self.constraint {
-            constraint.constant += add
+            constraint.constant = value
             return
         }
         
@@ -238,10 +276,10 @@ public class KeyboardLock
                 if let constraint = self.view.superview?.constraints[i] {
                     if
                         constraint.firstItem as? UIView == self.view &&
-                        constraint.firstAttribute == .bottom &&
-                        constraint.relation == .equal
+                            constraint.firstAttribute == .bottom &&
+                            constraint.relation == .equal
                     {
-                        self.view.superview?.constraints[i].constant += add
+                        self.view.superview?.constraints[i].constant = value
                         return
                     }
                 }
@@ -250,15 +288,50 @@ public class KeyboardLock
         NSLog("KeyBoardLock: Failed to find bottom constraint.")
     }
     
+    /// Retrieve the bottom constraint
+    ///
+    private func getBottomConstraint() -> NSLayoutConstraint?
+    {
+        for i in self.view.superview?.constraints.indices
+            ?? Range(NSRange(location: 0, length: 0))! {
+                if let constraint = self.view.superview?.constraints[i] {
+                    if
+                        constraint.firstItem as? UIView == self.view &&
+                            constraint.firstAttribute == .bottom &&
+                            constraint.relation == .equal
+                    {
+                        return constraint
+                    }
+                }
+        }
+        
+        return nil
+    }
+    
+    /// Retrieve the height constraint
+    ///
+    private func getHeightConstraint() -> NSLayoutConstraint?
+    {
+        for i in self.view.constraints.indices {
+            let constraint = self.view.constraints[i]
+            if constraint.firstAttribute == .height && constraint.relation == .equal {
+                return constraint
+            }
+        }
+        
+        return nil
+    }
+    
     /// Update the Frame origin.
     ///
     /// - Parameters
     ///     - add: The amount to add to the value.
     ///
-    private func updateFrameOrigin(add: CGFloat)
+    private func updateFrameOrigin(value: CGFloat)
     {
+        NSLog("Updating frame.origin.y to \(value)")
         var frame = self.view.frame
-        frame.origin.y += add
+        frame.origin.y = value
         self.view.frame = frame
     }
 }
