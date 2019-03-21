@@ -104,24 +104,23 @@ public class KeyboardLock
             queue: nil,
             using: { notification in
                 
-                let keyboardSize: CGSize? = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.size
+                let keyboardSize: CGSize? = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size
                 self.keyboardHeight = (keyboardSize?.height)!
                 self.keyboardActive = true
                 
-                //self.view.superview?.layoutIfNeeded()
                 UIView.animate(withDuration: 0.3) {
                     switch(self.lockType) {
                     case .HeightConstraint :
-                        self.updateHeightConstraint(add: self.keyboardHeight)
+                        self.updateHeightConstraint(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
                         break;
                         
                         
                     case .BottomConstraint :
-                        self.updateBottomConstraint(add: -self.keyboardHeight)
+                        self.updateBottomConstraint(add: -(self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
                         break;
                         
                     case .FrameOrigin :
-                        self.updateFrameOrigin(add: -self.keyboardHeight)
+                        self.updateFrameOrigin(add: -(self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
                         break;
                     }
                     
@@ -139,16 +138,16 @@ public class KeyboardLock
                 UIView.animate(withDuration: 0.3) {
                     switch(self.lockType) {
                     case .HeightConstraint :
-                        self.updateHeightConstraint(add: -self.keyboardHeight)
+                        self.updateHeightConstraint(add: -(self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
                         break;
                         
                         
                     case .BottomConstraint :
-                        self.updateBottomConstraint(add: self.keyboardHeight)
+                        self.updateBottomConstraint(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
                         break;
                         
                     case .FrameOrigin :
-                        self.updateFrameOrigin(add: self.keyboardHeight)
+                        self.updateFrameOrigin(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
                         break;
                     }
                     
@@ -167,16 +166,16 @@ public class KeyboardLock
             UIView.animate(withDuration: 0.3) {
                 switch(self.lockType) {
                 case .HeightConstraint :
-                    self.updateHeightConstraint(add: -self.keyboardHeight)
+                    self.updateHeightConstraint(add: -(self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
                     break;
                     
                     
                 case .BottomConstraint :
-                    self.updateBottomConstraint(add: self.keyboardHeight)
+                    self.updateBottomConstraint(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
                     break;
                     
                 case .FrameOrigin :
-                    self.updateFrameOrigin(add: self.keyboardHeight)
+                    self.updateFrameOrigin(add: self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom)
                     break;
                 }
                 
@@ -239,8 +238,8 @@ public class KeyboardLock
                 if let constraint = self.view.superview?.constraints[i] {
                     if
                         constraint.firstItem as? UIView == self.view &&
-                            constraint.firstAttribute == .bottom &&
-                            constraint.relation == .equal
+                        constraint.firstAttribute == .bottom &&
+                        constraint.relation == .equal
                     {
                         self.view.superview?.constraints[i].constant += add
                         return

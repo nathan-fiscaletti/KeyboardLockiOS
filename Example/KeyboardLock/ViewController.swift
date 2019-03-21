@@ -61,6 +61,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if (row == 0) {
             
             NSLog("Set to .BottomConstraint")
+            
+            // Set the height based on the device type
+            // since iPhone X has bottom margins.
+            heightConstraint.constant = (self.view.window?.frame)!.height - (
+                (self.view.window?.safeAreaInsets)!.bottom + (self.view.window?.safeAreaInsets)!.top
+            )
+            
             /// Update the priority on our height
             /// and bottom constraints so that
             /// they don't interfere with eachother.
@@ -79,6 +86,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
             NSLog("Set to .HeightConstraint")
             
+            // Set the height based on the device type
+            // since iPhone X has bottom margins.
+            heightConstraint.constant = (self.view.window?.frame)!.height - (
+                (self.view.window?.safeAreaInsets)!.bottom + (self.view.window?.safeAreaInsets)!.top
+            )
+            
             /// Update the priority on our height
             /// and bottom constraints so that
             /// they don't interfere with eachother.
@@ -95,6 +108,19 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         } else if (row == 2) {
             
             NSLog("Set to .FrameOrigin")
+            
+            /// Update the priority on our height
+            /// and bottom constraints so that
+            /// they don't interfere with eachother.
+            ///
+            bottomConstraint.priority = UILayoutPriority(999)
+            heightConstraint.priority = UILayoutPriority(998)
+            
+            // Set the height based on the device type
+            // since iPhone X has bottom margins.
+            heightConstraint.constant = (self.view.window?.frame)!.height - (
+                (self.view.window?.safeAreaInsets)!.bottom + (self.view.window?.safeAreaInsets)!.top
+            )
             
             /// Create the lock.
             self.lock = KeyboardLock(
