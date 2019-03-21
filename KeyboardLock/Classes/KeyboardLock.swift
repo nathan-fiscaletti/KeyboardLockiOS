@@ -137,12 +137,8 @@ public class KeyboardLock
             object: nil,
             queue: nil,
             using: { notification in
-                NSLog("Called keyboard will show")
                 let keyboardSize: CGSize? = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size
                 self.keyboardHeight = (keyboardSize?.height)!
-                
-                let offset: CGFloat = self.keyboardHeight - ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.size).height
-                
                 self.keyboardActive = true
                 
                 UIView.animate(withDuration: 0.3) {
@@ -172,7 +168,6 @@ public class KeyboardLock
             queue: nil,
             using: { notification in
                 self.keyboardActive = false
-                NSLog("Called keyboard will hide")
                 UIView.animate(withDuration: 0.3) {
                     switch(self.lockType) {
                     case .HeightConstraint :
@@ -329,7 +324,6 @@ public class KeyboardLock
     ///
     private func updateFrameOrigin(value: CGFloat)
     {
-        NSLog("Updating frame.origin.y to \(value)")
         var frame = self.view.frame
         frame.origin.y = value
         self.view.frame = frame
