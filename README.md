@@ -20,6 +20,8 @@ KeyboardLock(
 ).lock()
 ```
 
+> When using `.BottomConstraint` or `.HeightConstraint`, you can either pass the constraint you wish to update manually using `withConstraint:` in the constructor, or you can leave it blank and the system will attempt to ind the constraint itself.
+
 ## Installation
 
 KeyboardLock is available through [CocoaPods](https://cocoapods.org). To install
