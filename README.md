@@ -2,7 +2,7 @@
 
 ![Preview][preview]
 
-[preview]: /images/preview.gif "Preview"
+[preview]: /Images/preview.gif "Preview"
 
 [![CI Status](https://img.shields.io/travis/nathan-fiscaletti/KeyboardLock.svg?style=flat)](https://travis-ci.org/nathan-fiscaletti/KeyboardLock)
 [![Version](https://img.shields.io/cocoapods/v/KeyboardLock.svg?style=flat)](https://cocoapods.org/pods/KeyboardLock)
