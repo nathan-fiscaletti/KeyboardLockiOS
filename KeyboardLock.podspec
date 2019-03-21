@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KeyboardLock'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'An iOS module for locking a view to the keyboard'
   s.swift_version    = '4.2'
 
