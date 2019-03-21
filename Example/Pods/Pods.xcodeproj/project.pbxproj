@@ -10,7 +10,7 @@
 		059CF1D2F777D3489DCD627EE8907A28 /* Pods-KeyboardLock_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F255E3FDAECCDB6F15AFE33B5E4BE91E /* Pods-KeyboardLock_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17334E0BD9523EE1C157836160064588 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		444E985C7950850C4EEC1E869011FC16 /* KeyboardLock-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 70454C9257CF68992937C1ACD56F24C8 /* KeyboardLock-dummy.m */; };
-		99EAD4F922436335000E2375 /* KeyboardLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAD4F822436335000E2375 /* KeyboardLock.swift */; };
+		99F8FAF0224408E000910058 /* KeyboardLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F8FAEF224408E000910058 /* KeyboardLock.swift */; };
 		ABB166A9AB3A1DFE4A3F02C4AECEBFAD /* Pods-KeyboardLock_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5598DB72E136745E1F000C9505703E /* Pods-KeyboardLock_Tests-dummy.m */; };
 		BBE58DC2767486386F64EA41E226E536 /* Pods-KeyboardLock_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF341B20FB1C26A155E1464BE5DE98F3 /* Pods-KeyboardLock_Example-dummy.m */; };
 		C2B786887BCFD4363DCC5B1FD2F15277 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
@@ -58,7 +58,7 @@
 		82D676469043A9C080AD97D2C80E82AE /* Pods-KeyboardLock_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KeyboardLock_Tests-umbrella.h"; sourceTree = "<group>"; };
 		83BB4182924DDD7126D73D38D7654A29 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		99EAD4F822436335000E2375 /* KeyboardLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLock.swift; sourceTree = "<group>"; };
+		99F8FAEF224408E000910058 /* KeyboardLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardLock.swift; path = KeyboardLock/Classes/KeyboardLock.swift; sourceTree = "<group>"; };
 		9EE1E2095F2CF68B71754483B1D995C2 /* Pods-KeyboardLock_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KeyboardLock_Tests-resources.sh"; sourceTree = "<group>"; };
 		AF341B20FB1C26A155E1464BE5DE98F3 /* Pods-KeyboardLock_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KeyboardLock_Example-dummy.m"; sourceTree = "<group>"; };
 		B96541B3426D87D995A222D66E6D2E78 /* KeyboardLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +70,7 @@
 		D16DCE08F3DDB04A44E43E3FB1430B0F /* Pods_KeyboardLock_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyboardLock_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B3B839396D00DC2EAABB14E9AE81BB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC42737E1ED9A3D671664540C0B81340 /* Pods-KeyboardLock_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KeyboardLock_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		EC5B3A537D3AE7324C8E68AAC30A5F14 /* KeyboardLock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = KeyboardLock.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EC5B3A537D3AE7324C8E68AAC30A5F14 /* KeyboardLock.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = KeyboardLock.podspec; sourceTree = "<group>"; };
 		F255E3FDAECCDB6F15AFE33B5E4BE91E /* Pods-KeyboardLock_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KeyboardLock_Example-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,7 +201,7 @@
 			children = (
 				DAE07992F8E01009AD8F02CE4F69B20B /* Pod */,
 				051915D464F3A7A23175703022C83492 /* Support Files */,
-				99EAD4F822436335000E2375 /* KeyboardLock.swift */,
+				99F8FAEF224408E000910058 /* KeyboardLock.swift */,
 			);
 			name = KeyboardLock;
 			path = ../..;
@@ -364,8 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99F8FAF0224408E000910058 /* KeyboardLock.swift in Sources */,
 				444E985C7950850C4EEC1E869011FC16 /* KeyboardLock-dummy.m in Sources */,
-				99EAD4F922436335000E2375 /* KeyboardLock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

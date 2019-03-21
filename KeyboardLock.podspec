@@ -9,7 +9,8 @@
 Pod::Spec.new do |s|
   s.name             = 'KeyboardLock'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of KeyboardLock.'
+  s.summary          = 'An iOS module for locking a view to the keyboard'
+  s.swift_version    = '4.2'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,10 +19,10 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Lock any view to the keyboard. Works best when you have a single container view with everything else inside of it.
                        DESC
 
-  s.homepage         = 'https://github.com/nathan-fiscaletti/KeyboardLock'
+  s.homepage         = 'https://github.com/nathan-fiscaletti/KeyboardLockiOS'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'nathan-fiscaletti' => 'nathan.fiscaletti@gmail.com' }
