@@ -1,5 +1,9 @@
 # KeyboardLock
 
+![Preview][preview]
+
+[preview]: /images/preview.gif "Preview"
+
 [![CI Status](https://img.shields.io/travis/nathan-fiscaletti/KeyboardLock.svg?style=flat)](https://travis-ci.org/nathan-fiscaletti/KeyboardLock)
 [![Version](https://img.shields.io/cocoapods/v/KeyboardLock.svg?style=flat)](https://cocoapods.org/pods/KeyboardLock)
 [![License](https://img.shields.io/cocoapods/l/KeyboardLock.svg?style=flat)](https://cocoapods.org/pods/KeyboardLock)
@@ -9,7 +13,12 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+```swift
+KeyboardLock(
+    withView: containerView,
+    andLockType: .BottomConstraint
+).lock()
+```
 
 ## Installation
 

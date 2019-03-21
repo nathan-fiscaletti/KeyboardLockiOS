@@ -1,0 +1,6 @@
+framework module KeyboardLock {
+  umbrella header "KeyboardLock-umbrella.h"
+
+  export *
+  module * { export * }
+}

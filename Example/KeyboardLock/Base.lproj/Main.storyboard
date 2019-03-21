@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +20,94 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-Od-5vX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cy2-FZ-pyG">
+                                        <rect key="frame" x="0.0" y="74" width="375" height="218"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="218" id="U3p-1L-eT8"/>
+                                        </constraints>
+                                    </pickerView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to test..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0cv-i7-awq">
+                                        <rect key="frame" x="8" y="627" width="289" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="RN7-jw-65g"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X09-dK-smk">
+                                        <rect key="frame" x="305" y="627" width="70" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="6pM-TP-JUX"/>
+                                            <constraint firstAttribute="width" constant="70" id="Dao-CB-xjM"/>
+                                        </constraints>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="KGs-An-M4m"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Lock Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2v-kn-e27">
+                                        <rect key="frame" x="8" y="45" width="359" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="1Ct-OA-Ggq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ5-ve-VZd">
+                                        <rect key="frame" x="8" y="598" width="359" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Uex-MB-cHq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cy2-FZ-pyG" firstAttribute="leading" secondItem="fYc-Od-5vX" secondAttribute="leading" id="Bve-xg-DNp"/>
+                                    <constraint firstAttribute="bottom" secondItem="0cv-i7-awq" secondAttribute="bottom" id="D1b-I6-6Lk"/>
+                                    <constraint firstItem="0cv-i7-awq" firstAttribute="top" secondItem="dQ5-ve-VZd" secondAttribute="bottom" constant="8" id="N6C-lm-wCb"/>
+                                    <constraint firstItem="0cv-i7-awq" firstAttribute="leading" secondItem="fYc-Od-5vX" secondAttribute="leading" constant="8" id="OGv-aI-1zM"/>
+                                    <constraint firstAttribute="trailing" secondItem="e2v-kn-e27" secondAttribute="trailing" constant="8" id="S67-YL-83u"/>
+                                    <constraint firstAttribute="bottom" secondItem="X09-dK-smk" secondAttribute="bottom" id="XtD-mh-Y5z"/>
+                                    <constraint firstAttribute="height" priority="998" constant="667" id="ct4-Hg-0T2"/>
+                                    <constraint firstItem="e2v-kn-e27" firstAttribute="leading" secondItem="fYc-Od-5vX" secondAttribute="leading" constant="8" id="fVv-j8-avA"/>
+                                    <constraint firstItem="e2v-kn-e27" firstAttribute="top" secondItem="fYc-Od-5vX" secondAttribute="top" constant="45" id="gOv-Rc-bTX"/>
+                                    <constraint firstItem="cy2-FZ-pyG" firstAttribute="top" secondItem="e2v-kn-e27" secondAttribute="bottom" constant="8" id="hRj-7r-EtE"/>
+                                    <constraint firstAttribute="trailing" secondItem="dQ5-ve-VZd" secondAttribute="trailing" constant="8" id="kS4-DK-7eg"/>
+                                    <constraint firstItem="dQ5-ve-VZd" firstAttribute="leading" secondItem="fYc-Od-5vX" secondAttribute="leading" constant="8" id="lj7-ZC-g20"/>
+                                    <constraint firstItem="X09-dK-smk" firstAttribute="leading" secondItem="0cv-i7-awq" secondAttribute="trailing" constant="8" id="ryO-7I-8yu"/>
+                                    <constraint firstAttribute="trailing" secondItem="cy2-FZ-pyG" secondAttribute="trailing" id="txK-Pn-PHY"/>
+                                    <constraint firstAttribute="trailing" secondItem="X09-dK-smk" secondAttribute="trailing" id="z8R-Q0-yxE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fYc-Od-5vX" firstAttribute="bottom" secondItem="kh9-bI-dsS" secondAttribute="bottom" priority="999" id="L9L-zq-B9T"/>
+                            <constraint firstItem="fYc-Od-5vX" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="d4a-sO-iZU"/>
+                            <constraint firstItem="fYc-Od-5vX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="xf3-2s-Clu"/>
+                            <constraint firstAttribute="trailing" secondItem="fYc-Od-5vX" secondAttribute="trailing" id="zzM-2Q-bzg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="L9L-zq-B9T" id="1fN-GQ-5HX"/>
+                        <outlet property="containerView" destination="fYc-Od-5vX" id="koO-Nz-sBg"/>
+                        <outlet property="heightConstraint" destination="ct4-Hg-0T2" id="uvc-LV-Nh1"/>
+                        <outlet property="lockTypePicker" destination="cy2-FZ-pyG" id="LZq-y9-LgK"/>
+                        <outlet property="testTextBox" destination="0cv-i7-awq" id="E3v-TJ-xHe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="485.60000000000002" y="114.69265367316342"/>
         </scene>
     </scenes>
 </document>

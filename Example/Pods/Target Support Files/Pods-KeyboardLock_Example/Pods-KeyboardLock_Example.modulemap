@@ -1,0 +1,6 @@
+framework module Pods_KeyboardLock_Example {
+  umbrella header "Pods-KeyboardLock_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

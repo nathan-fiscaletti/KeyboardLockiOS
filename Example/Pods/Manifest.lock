@@ -1,0 +1,16 @@
+PODS:
+  - KeyboardLock (0.1.0)
+
+DEPENDENCIES:
+  - KeyboardLock (from `../`)
+
+EXTERNAL SOURCES:
+  KeyboardLock:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KeyboardLock: 528e5e1f8d7535f622a7d028d521b9bd1d3cc369
+
+PODFILE CHECKSUM: cded1cd164da5d4e7a2520327abe634e57143e2c
+
+COCOAPODS: 1.5.3
