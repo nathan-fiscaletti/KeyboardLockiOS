@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'KeyboardLock_Example' do
+  pod 'KeyboardLock', :path => '../'
+
+  target 'KeyboardLock_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
