@@ -141,19 +141,25 @@ public class KeyboardLock
                 self.keyboardHeight = (keyboardSize?.height)!
                 self.keyboardActive = true
                 
+                var insetBottom:CGFloat = 0.0
+                
+                if let window = self.view.window {
+                    insetBottom = window.safeAreaInsets.bottom
+                }
+                
                 UIView.animate(withDuration: 0.3) {
                     switch(self.lockType) {
                     case .HeightConstraint :
-                        self.updateHeightConstraint(value: self.originalValue - (self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
+                        self.updateHeightConstraint(value: self.originalValue - (self.keyboardHeight - insetBottom))
                         break;
                         
                         
                     case .BottomConstraint :
-                        self.updateBottomConstraint(value: self.originalValue - (self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
+                        self.updateBottomConstraint(value: self.originalValue - (self.keyboardHeight - insetBottom))
                         break;
                         
                     case .FrameOrigin :
-                        self.updateFrameOrigin(value: self.originalValue - (self.keyboardHeight - (self.view.window?.safeAreaInsets)!.bottom))
+                        self.updateFrameOrigin(value: self.originalValue - (self.keyboardHeight - insetBottom))
                         break;
                     }
                     
