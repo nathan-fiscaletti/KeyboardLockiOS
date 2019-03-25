@@ -5,6 +5,8 @@
 <img align="right" src="https://github.com/nathan-fiscaletti/KeyboardLockiOS/blob/master/Images/preview.gif"/>
 </a>
 
+No longer will you have to deal with the keyboard covering up the input box in your iOS applications. KeyboardLockiOS gives you multiple options that provide functionality to lock a `UIView` to the keyboard when the keyboard is visible.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -25,6 +27,11 @@ it, simply add the following line to your Podfile:
 pod 'KeyboardLock'
 ```
 
+## Other Notes
+
+1. When using `.BottomConstraint` or `.HeightConstraint`, you can either pass the constraint you wish to update manually using `andConstraint:` in the constructor, or you can leave it blank and the system will attempt to find the constraint itself. If it cannot find the proper constraint, a warning message will be sent through `NSLog`.
+2. You can unlock a view from the keyboard using the `.unlock()` member function of the associated `KeyboardLock` instance.
+
 ## Requirements
 [![Platform iOS](https://img.shields.io/badge/Platform-iOS-blue.svg?style=fla)]()
 
@@ -33,11 +40,6 @@ pod 'KeyboardLock'
 | KeyboardLock           | Swift    | iOS 11.0           |
 | Demo Project           | Swift    | iOS 11.0           |
 
-
-## Other Notes
-
-1. When using `.BottomConstraint` or `.HeightConstraint`, you can either pass the constraint you wish to update manually using `andConstraint:` in the constructor, or you can leave it blank and the system will attempt to find the constraint itself. If it cannot find the proper constraint, a warning message will be sent through `NSLog`.
-2. You can unlock a view from the keyboard using the `.unlock()` member function of the associated `KeyboardLock` instance.
 
 ## Lock Types
 
