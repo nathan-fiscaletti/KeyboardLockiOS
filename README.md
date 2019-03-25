@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/KeyboardLock.svg?style=flat)](https://cocoapods.org/pods/KeyboardLock)
 [![License](https://img.shields.io/cocoapods/l/KeyboardLock.svg?style=flat)](https://cocoapods.org/pods/KeyboardLock)
 [![Platform](https://img.shields.io/cocoapods/p/KeyboardLock.svg?style=flat)](https://cocoapods.org/pods/KeyboardLock)
-<img align="right" src="https://github.com/nathan-fiscaletti/KeyboardLockiOS/blob/master/Images/preview.gif" width=356, height=670/>
+<img align="right" src="https://github.com/nathan-fiscaletti/KeyboardLockiOS/blob/master/Images/preview.gif"/>
 </a>
 
 ## Example
