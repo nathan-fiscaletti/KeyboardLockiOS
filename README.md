@@ -1,9 +1,7 @@
 # KeyboardLock
 
-[![CI Status](https://img.shields.io/travis/nathan-fiscaletti/KeyboardLock.svg?style=flat)](https://travis-ci.org/nathan-fiscaletti/KeyboardLock)
 [![Version](https://img.shields.io/cocoapods/v/KeyboardLock.svg?style=flat)](https://cocoapods.org/pods/KeyboardLock)
 [![License](https://img.shields.io/cocoapods/l/KeyboardLock.svg?style=flat)](https://cocoapods.org/pods/KeyboardLock)
-[![Platform](https://img.shields.io/cocoapods/p/KeyboardLock.svg?style=flat)](https://cocoapods.org/pods/KeyboardLock)
 <img align="right" src="https://github.com/nathan-fiscaletti/KeyboardLockiOS/blob/master/Images/preview.gif"/>
 </a>
 
@@ -26,6 +24,14 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'KeyboardLock'
 ```
+
+## Requirements
+[![Platform iOS](https://img.shields.io/badge/Platform-iOS-blue.svg?style=fla)]()
+
+|                        | Language | Minimum iOS Target |
+|------------------------|----------|--------------------|
+| KeyboardLock           | Swift    | iOS 11.0           |
+| Demo Project           | Swift    | iOS 11.0           |
 
 
 ## Other Notes
