@@ -28,12 +28,12 @@ pod 'KeyboardLock'
 ```
 
 
-### Other Notes
+## Other Notes
 
 1. When using `.BottomConstraint` or `.HeightConstraint`, you can either pass the constraint you wish to update manually using `andConstraint:` in the constructor, or you can leave it blank and the system will attempt to find the constraint itself. If it cannot find the proper constraint, a warning message will be sent through `NSLog`.
 2. You can unlock a view from the keyboard using the `.unlock()` member function of the associated `KeyboardLock` instance.
 
-### Lock Types
+## Lock Types
 
 |Lock Type|Description|Constraint Search Criteria|
 |---|---|---|
